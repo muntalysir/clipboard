@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+/* If you want to add custom colors or fonts, 
+   do it here instead of in a separate config file: 
+*/
+
+@theme {
+  --breakpoint-sm: 480px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 976px;
+  --breakpoint-xl: 1440px;
+
+  /* --- CUSTOM COLORS --- */
+  --color-strong-cyan: hsl(171, 66%, 44%);
+  --color-light-blue: hsl(233, 100%, 69%);
+  --color-dark-grayish-blue: hsl(210, 10%, 33%);
+  --color-grayish-blue: hsl(201, 11%, 66%);
+
+  --font-sans: 'Bai Jamjuree', ui-sans-serif, system-ui;
+}
+
+/* You can still add custom CSS here */
+@layer base {
+  body {
+    @apply antialiased text-slate-900;
+    background-image: url('../images/bg-header-desktop.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    @apply overflow-x-hidden;
+
+    /* Modern CSS nesting syntax for the mobile override */
+    @media (width <= 576px) {
+      background-image: url('../images/bg-header-mobile.png');
+    }
+  }
+
+  h3 {
+    @apply mb-8 text-4xl font-bold text-dark-grayish-blue md:text-5xl;
+  }
+
+  h5 {
+    @apply mb-2 text-2xl font-bold text-dark-grayish-blue;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-6xl mx-auto text-center px-10;
+  }
+
+  .section-content {
+    @apply max-w-3xl mx-auto text-xl leading-9 text-center text-grayish-blue;
+  }
+
+  .button-container {
+    @apply flex flex-col justify-center w-full space-y-6 text-xl text-white md:flex-row md:space-y-0 md:space-x-4;
+  }
+
+  .ficon:hover {
+    filter: invert(53%) sepia(68%) saturate(434%) hue-rotate(121deg)
+      brightness(101%) contrast(94%);
+  }
+}
